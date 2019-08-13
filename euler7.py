@@ -38,4 +38,6 @@ if __name__ == "__main__":
     main()
     
     
-#Answer is 104743
+#Real answer is 104743
+#My answer is 104593
+#TODO like problem 10, might need to rework my miller rabin
