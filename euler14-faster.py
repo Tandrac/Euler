@@ -5,6 +5,8 @@ Created on Wed Aug 14 13:39:25 2019
 @author: Tommy
 """
 
+import time
+
 
 def recurse(i, chains, count):
     if i in chains:
@@ -13,10 +15,12 @@ def recurse(i, chains, count):
     if(i>1):
         #even
         if (i%2 == 0):
-            count = recurse(i/2, chains, count+1)
+            chains[i] = recurse(i/2, chains, 1)
+            return chains[i] + count
         #odd
         else:
-            count = recurse(3*i+1, chains, count+1)
+            chains[i] = recurse(3*i+1, chains, 1)
+            return chains[i] + count
     return count
     
 
@@ -24,21 +28,27 @@ def recurse(i, chains, count):
 
 
 def main():
+    
+    start = time.time()
+    
     chains = {}
     final = 0
     num = 0
     
-    maxNum = 999999
-    
+    maxNum = 1000000
+        
     for i in range(maxNum):
-        chains[i] = recurse(i, chains, 0)
+        recurse(i, chains, 0)
         
     for x in chains:
         if((chains[x] > final) and x <= maxNum):
             final = chains[x]
             num = x
+    end = time.time()
     print(num)
     print(final)
+    print(end-start)
+    
 if __name__ == "__main__":
     main()
     
