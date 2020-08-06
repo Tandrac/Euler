@@ -8,7 +8,8 @@ Created on Wed Jan 22 17:03:11 2020
 def main():
     count = 0
     for i in range(1,1001):
-        temp = (i**i)
+        #rounding temp probably unnessicary, but might speed up larger values?
+        temp = (i**i)%10000000000
         count += temp
     print(count%10000000000)
 
